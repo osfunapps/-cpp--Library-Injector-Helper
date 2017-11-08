@@ -15,8 +15,6 @@ public:
 
 	void run_on_all_of_the_folders(string foldersPath)
 	{
-		cout << "looking for all folders in foldersPath: " << foldersPath;
-
 		DIR *dir;
 		struct dirent *ent;
 
@@ -57,8 +55,6 @@ private:
 
 	void run_on_specific_folder(string folder_path)
 	{
-		cout << "\n\nlooking in folder " << folder_path;
-
 		DIR *dir;
 		struct dirent *ent;
 
@@ -78,6 +74,7 @@ private:
 				else if(fileName == BUILD_GRADLE && (folder_path.find(+"\\"+APP+"\\") != string::npos))
 				{
 					gradleHandler -> changeGradleVersion(folder_path + BUILD_GRADLE);
+					cout << "\nGradle file updated in " << folder_path;
 					return;
 				}
 
@@ -91,7 +88,7 @@ private:
 					remove(dest);
 					bool copied = FileCopier::copy_file(filePath.c_str(), dest);
 					if (copied)
-						cout << "\n\ncopied to : " << dest << "\n";
+						cout << "\nLibrary file updated in: " << folder_path <<"\n\n";
 					return;
 				}
 			}

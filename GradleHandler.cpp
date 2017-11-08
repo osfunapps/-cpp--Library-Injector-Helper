@@ -19,7 +19,6 @@ public:
 
 	void changeGradleVersion(string gradleFilePath)
 	{
-		cout << "\n\n found gradle path: " << gradleFilePath;
 		
 		//input stream
 		ifstream inFile;
@@ -69,7 +68,6 @@ public:
 		int versionDigitsCount = end - start;
 		
 		string versionName = versionNameLine.substr(start, versionDigitsCount);
-		char digits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' };
 		for (int i = versionDigitsCount-1; i > -1; i-=2)
 		{
 			int currentDigit = versionName[i] - '0';
